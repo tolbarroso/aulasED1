@@ -70,3 +70,18 @@ o nome1 e nome2, se for comparado o nome1 ou nome2 com o nome3, irá dar false.
 então, usa-se o método equals para comparar os objetos:
 if(nome1.equals(nome3) == true){
 
+AULA 3 (16/8):
+Gerenciamento de memória
+-> Alocação: Processo de reserva de uma ou mais células de memória para uma 
+variável de programa;
+-> Desalocação: Processo de devolução das células de memória de uma variável 
+ao pool de células de memória.
+
+*O tempo de vida de uma variável é o tempo durante o qual ela permanece 
+vinculada a uma localização de memória específica.
+**O tempo de vida de uma variável é o intervalo de tempo decorrente entre 
+a sua alocação ("criação") e sua desalocação ("destruição").
+
+-Tempo de vida de variáveis locais:
+
+
