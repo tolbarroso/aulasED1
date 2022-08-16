@@ -6,6 +6,8 @@ public class modularização {
     }
     return max;
   }
+  // As variáveis a, b, max são locais ao método maior.
+  
   public static void main (String{} args) {
     int n1 = 20;
     int n2 = 5;
@@ -17,3 +19,4 @@ public class modularização {
     System.out.println("Maior: " + k);
   }
 }
+// As variáveis n1, n2, n3, n4, i, j, k são locais ao método main.
