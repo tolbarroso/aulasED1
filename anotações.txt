@@ -82,6 +82,15 @@ vinculada a uma localização de memória específica.
 **O tempo de vida de uma variável é o intervalo de tempo decorrente entre 
 a sua alocação ("criação") e sua desalocação ("destruição").
 
--Tempo de vida de variáveis locais:
+Variáveis Dinâmicas (Heap): Uma variável dinâmica que pode ser alocada 
+pelo programador a qualquer momento durante a execução do programa.
 
+-Função alocada: new
+ex.: String nome = new String("Ana");
+ContaBanco conta = new ContaBanco();
+double[] salarios = new double[5];
+
+-> A "destruição" (desalocação) de uma variável heap, em Java, é automaticamente 
+feita pelo processo de coleta de lixo de memória (garbage collection).
+A desalocação irá ocorrer sempre que um objeto não esteja mais sendo referenciado.
 
