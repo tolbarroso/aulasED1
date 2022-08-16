@@ -20,3 +20,6 @@ public class modularização {
   }
 }
 // As variáveis n1, n2, n3, n4, i, j, k são locais ao método main.
+
+Aluno aluno1 = new Aluno();
+Aluno aluno2; // ?????????????
