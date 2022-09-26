@@ -1,27 +1,19 @@
-public class LSENode {
-    // Atributos
-    private Aluno info;
-    private LSENode prox;
-
-    // Construtor      
-    public LSENode (Aluno valor) {
-        this.info = valor;
-    }     
-
-    // Métodos GET e SET
-    public void setInfo (Aluno valor) {
+public class LSENode<T extends Comparable<T>> {
+    private T info;
+    private LSENode<T> prox;   
+    public LSENode (T valor) {
         this.info = valor;
     }
-
-    public void setProx (LSENode novoProx) {
-        this.prox = novoProx;
+    public void setInfo (T valor) {
+        this.info = valor;
     }
-
-    public Aluno getInfo() {
+    public T getInfo() {
         return this.info;
     }
-    
-    public LSENode getProx() {
-        return this.prox;
+    public void setProx(LSENode<T> novoProx) {
+        this.prox = novoProx;
     }
-}
+    public LSENode<T> getProx () {
+        return this.prox;
+    }    
+ }

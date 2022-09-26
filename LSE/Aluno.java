@@ -14,6 +14,13 @@ public class Aluno implements Comparable <Aluno>{
     public Aluno (String m){
         this.matr = m;
     }
+
+    public Aluno (String ma, String n, double me, int f) {
+        this.matr = ma;
+        this.nome = n;
+        this.media = me;
+        this.faltas = f;
+    }
     
     // Métodos GET e SET 
     public String getMatr() {
