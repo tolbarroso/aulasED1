@@ -1,0 +1,96 @@
+AULA 01 (09/8):
+Relembrando P2:
+*Vetores: Listas, Homogêneos ou sequenciais.
+
+i-1 , i , i+1
+0 , 1 , 2 , 3 , 4 , 5
+
+Vetor Aluno[] Turma;
+
+endereço elemento 0 + índice * tamanho elemento
+ex.: elem 5 => 100 + 5 * 20 => endereço 1100
+
+Introdução e Resumo sobre a disciplina de Estrutura de dados I:
+-> Objeto: Dar eficiência no armazenamento e busca de dados colhidos.
+
+-> Conteúdo que será dado:
+*Listas: toda lista tem um antecessor e um sucesssor.
+-Homogêneas (Sequenciais, Simples, Ordenadas...)
+Listas independentes mas semelhantes.
+
+-Encadeadas (Simples, Duplamente ou Círcular)
+Tem uma lista de objetos que formam uma cadeia sequencial no qual 
+cada objeto depende do outro para capturar as informações, se não 
+houver continuidade de passagem de informações, perderemos todo 
+conteúdo (garbage collection).
+
+Listas Circulares são listas encadeadas sem ínicio e fim, o qual as 
+listas sempre (continuamente) se conectam umas as outras.
+
+*Pesquisas na Lista pelos Dados, não pelo endereços!
+
+Conteúdo Extra!
+*Substituição de Endereço de Vetor:
+Aluno[] turma = new Aluno[7];
+-> dois comandos na mesma linha, no qual se indica/substitui a 
+lista anterior com o comando NEW.
+
+*Variáveis
+-Stack Dinâmicas (Declaradas):
+int num; {nome, tipo ou endereço}
+
+-Stack Dinâmicas (Anônimas):
+tipo e endereço.
+
+*Tipos Abstratos de Dados:
+-> Fila: Dados que tem comportamentos pré-definidos, o qual dados novos sempre entraram em último.
+-> Pilha: Dados que tem comportamentos pré-definidos / padrão, o qual dados novos sempre entraram em primeiro.
+-> Árvore: Dados não sequenciais e não lineares. 
+Estudaremos este tipo de árvore -> ABB: Árvores Binárias de Busca (Ordenada) [um antecessor pode ter n sucessores]. 
+Obs.: Mais usado para tomada de decisões, como jogos.
+
+AULA 2 (12/8):
+Valores de referência:
+Variável  |    Tipo      |     Valores
+Num       |     int      |   Números inteiros
+Ender     |  referência  |  Endereço de memória
+
+-> Utilização:
+int[] vetInt = new int [5];
+String nome = "Maria";
+Aluno aluno1 = new Aluno("123");
+
+String nome1 = "Maria Clara";
+String nome2 = "Maria Clara";
+String nome3 = new String ("Maria Clara");
+
+if(nome1 == nome3){ [ERRO!! NÃO SE PODE USAR == PARA COMPARAR STRING!!]
+^^nesse modo ele compara os endereços. então só dará verdadeiro se for comparado
+o nome1 e nome2, se for comparado o nome1 ou nome2 com o nome3, irá dar false.
+então, usa-se o método equals para comparar os objetos:
+if(nome1.equals(nome3) == true){
+
+AULA 3 (16/8):
+Gerenciamento de memória
+-> Alocação: Processo de reserva de uma ou mais células de memória para uma 
+variável de programa;
+-> Desalocação: Processo de devolução das células de memória de uma variável 
+ao pool de células de memória.
+
+*O tempo de vida de uma variável é o tempo durante o qual ela permanece 
+vinculada a uma localização de memória específica.
+**O tempo de vida de uma variável é o intervalo de tempo decorrente entre 
+a sua alocação ("criação") e sua desalocação ("destruição").
+
+Variáveis Dinâmicas (Heap): Uma variável dinâmica que pode ser alocada 
+pelo programador a qualquer momento durante a execução do programa.
+
+-Função alocada: new
+ex.: String nome = new String("Ana");
+ContaBanco conta = new ContaBanco();
+double[] salarios = new double[5];
+
+-> A "destruição" (desalocação) de uma variável heap, em Java, é automaticamente 
+feita pelo processo de coleta de lixo de memória (garbage collection).
+A desalocação irá ocorrer sempre que um objeto não esteja mais sendo referenciado.
+
