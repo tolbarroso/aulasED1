@@ -138,7 +138,7 @@ public class LSEAluno {
         System.out.println(al.getFaltas());
     }
 
-    public void removerAlunoEspecifico() {
+    public void removerAlunoEspecifico(String matr) {
         Aluno proc = new Aluno(matr);
         LSENode atual, anterior;
         if (this.isEmpty() == true) {
@@ -179,15 +179,14 @@ public class LSEAluno {
         Aluno novoAl, alAux;
         LSEAluno outra = new LSEAluno();
         LSENode aux;
-        
+
         if (this.isEmpty() == true) {
             return outra;
-        }
-        else {
+        } else {
             aux = this.primeiro;
             while (aux != null) {
                 alAux = aux.getInfo();
-                novoAl = new Aluno (alAux.getMatr(), alAux.getNome(), alAux.getMedia(), alAux.getFaltas());
+                novoAl = new Aluno(alAux.getMatr(), alAux.getNome(), alAux.getMedia(), alAux.getFaltas());
                 outra.inserirAlunoPorUltimo(novoAl);
                 aux = aux.getProx();
             }

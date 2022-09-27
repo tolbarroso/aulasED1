@@ -16,7 +16,7 @@ public class TesteListaEncadeada {
                         op = in.nextInt();
                         in.nextLine();
                         switch (op) {
-                                case 1:
+                                case 1: // cadastrar aluno no início
                                         System.out.print("Informe o nome do aluno: ");
                                         nome = in.nextLine();
                                         System.out.print("Informe a matrícula do aluno: ");
@@ -24,7 +24,7 @@ public class TesteListaEncadeada {
                                         al = new Aluno(matr, nome);
                                         turma.inserirAluno(al);
                                         break;
-                                case 2:
+                                case 2: // cadastrar aluno no final
                                         System.out.print("Informe o nome do aluno: ");
                                         nome = in.nextLine();
                                         System.out.print("Informe a matrícula do aluno: ");
@@ -64,8 +64,9 @@ public class TesteListaEncadeada {
                                         turma.inserirNovasFaltas(al, faltas);
                                         break;
                                 case 7: // método de busca para achar um aluno e remover-lo
-
-                                        turma.removerAlunoEspecifico();
+                                        System.out.println("Insira a matrícula do aluno a ser removido: ");
+                                        matr = in.nextLine();
+                                        turma.removerAlunoEspecifico(matr);
                                         break;
                                 case 0:
                                         System.out.println("Programa encerrado!");
