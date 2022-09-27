@@ -174,4 +174,24 @@ public class LSEAluno {
             }
         }
     }
+
+    public LSEAluno criarCopia() {
+        Aluno novoAl, alAux;
+        LSEAluno outra = new LSEAluno();
+        LSENode aux;
+        
+        if (this.isEmpty() == true) {
+            return outra;
+        }
+        else {
+            aux = this.primeiro;
+            while (aux != null) {
+                alAux = aux.getInfo();
+                novoAl = new Aluno (alAux.getMatr(), alAux.getNome(), alAux.getMedia(), alAux.getFaltas());
+                outra.inserirAlunoPorUltimo(novoAl);
+                aux = aux.getProx();
+            }
+            return outra;
+        }
+    }
 }
