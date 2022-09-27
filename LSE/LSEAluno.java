@@ -194,43 +194,52 @@ public class LSEAluno {
         }
     }
 
-    /*public LSEAluno criarUniao(LSEAluno data2) {
-
-        LSEAluno listaUniao;
-        listaUniao = this.criarCopia();
-
-        LSENode aux = data2.primeiro;
-
-        while (aux != null) {
-            Aluno tempStudent = new Aluno((aux.getInfo()).getMatr(), aux.getInfo().getNome());
-            listaUniao.inserirAlunoPorUltimo(tempStudent);
-            aux = aux.getProx();
-
-        }
-
-        return listaUniao;
-
-    }*/
-
-    public LSEAluno criarUniao() {
+    public LSEAluno criarUniao(LSEAluno listaUniao) {
         Aluno novoAl, alAux, novoAl2, alAux2;
-        LSEAluno outra = new LSEAluno();
+        LSEAluno uniao = new LSEAluno();
         LSENode aux, aux2;
 
-        if (this.isEmpty() == true) {
-            return outra;
-        } else {
-            novoAl = new Aluno(alAux.getMatr(), alAux.getNome());
-            outra.inserirAlunoPorUltimo(novoAl); 
-            aux = aux.getProx(); 
-    
-            while (aux2 != null) { 
-                alAux2 = aux2.getInfoA(); 
-                novoAl2 = new Aluno(alAux2.getMatr(), alAux2.getNome());  
-                outra.inserirAlunoPorUltimo(novoAl2);
-                aux2 = aux2.getProx(); 
-            } 	
-            return outra; 
+        if (this.isEmpty() == true && listaUniao.isEmpty() == true) {
+            return uniao;
         } 
+        else if(listaUniao.isEmpty() == true){
+            aux = this.primeiro;
+            while (aux != null) {
+                alAux = aux.getInfoA();
+                novoAl = new Aluno(alAux.getMatr(), alAux.getNome());
+                uniao.inserirAlunoPorUltimo(novoAl);
+                aux = aux.getProx();
+            }
+            return uniao;
+        }
+        //Verifica se a original está vazia
+        else if(this.isEmpty() == true){
+            aux = listaUniao.primeiro;
+            while (aux != null) {
+                alAux = aux.getInfoA();
+                novoAl = new Aluno(alAux.getMatr(), alAux.getNome());
+                uniao.inserirAlunoPorUltimo(novoAl);
+                aux = aux.getProx();
+            }
+            return uniao;
+        }
+        //Quando ambas não estão vazias
+        else {
+        	aux = this.primeiro;
+        	aux2 = listaUniao.primeiro;
+            while (aux != null) {
+                alAux = aux.getInfoA();
+                novoAl = new Aluno(alAux.getMatr(), alAux.getNome());
+                uniao.inserirAlunoPorUltimo(novoAl);
+                aux = aux.getProx();
+            }
+            while (aux2 != null) {
+                alAux2 = aux2.getInfoA();
+                novoAl2 = new Aluno(alAux2.getMatr(), alAux2.getNome());
+                uniao.inserirAlunoPorUltimo(novoAl2);
+                aux2 = aux2.getProx();
+            }
+        	return uniao;
+        }
     }
 }
