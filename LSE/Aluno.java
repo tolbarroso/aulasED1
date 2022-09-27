@@ -1,28 +1,28 @@
-public class Aluno implements Comparable <Aluno>{
+public class Aluno implements Comparable<Aluno> {
     // Atributos
     private String matr;
     private String nome;
     private double media;
     private int faltas;
-    
+
     // Construtor
-    public Aluno (String m, String n) {
-        this.matr = m;        
+    public Aluno(String m, String n) {
+        this.matr = m;
         this.nome = n;
     }
 
-    public Aluno (String m){
+    public Aluno(String m) {
         this.matr = m;
     }
 
-    public Aluno (String ma, String n, double me, int f) {
+    public Aluno(String ma, String n, double me, int f) {
         this.matr = ma;
         this.nome = n;
         this.media = me;
         this.faltas = f;
     }
-    
-    // Métodos GET e SET 
+
+    // Métodos GET e SET
     public String getMatr() {
         return matr;
     }
@@ -54,15 +54,14 @@ public class Aluno implements Comparable <Aluno>{
     public void setFaltas(int faltas) {
         this.faltas = faltas;
     }
-    
 
-    public int compareTo (Aluno al) {
+    public int compareTo(Aluno al) {
         int result;
         result = this.getMatr().compareTo(al.getMatr());
         return result;
     }
-    
-    public String toString () {
+
+    public String toString() {
         return this.matr + " " + this.nome + " " + this.media + " " + this.faltas;
     }
 }

@@ -3,7 +3,7 @@ public class LSEAluno {
     private LSENode primeiro;
 
     // Métodos públicos
-    public boolean isEmpty() { 
+    public boolean isEmpty() {
         // testa se a lista está vazia
         if (this.primeiro == null) {
             return true;
@@ -12,16 +12,16 @@ public class LSEAluno {
         }
     }
 
-    public void inserirAluno(Aluno al) {  
+    public void inserirAluno(Aluno al) {
         // verifica, usando a função "buscar" se o aluno já é cadastrado.
         LSENode novo;
         LSENode result = this.buscar(al);
-        if (result != null){
+        if (result != null) {
             System.out.println("Aluno já está na lista!");
         } else {
-        // cria e preenche um novo nó com o aluno que foi passado como parâmetro.
+            // cria e preenche um novo nó com o aluno que foi passado como parâmetro.
             novo = new LSENode(al);
-        // insere um novo aluno no início de lista de alunos.
+            // insere um novo aluno no início de lista de alunos.
             if (this.isEmpty() == true) {
                 this.primeiro = novo;
             } else {
@@ -32,11 +32,11 @@ public class LSEAluno {
         }
     }
 
-    public void inserirAlunoPorUltimo(Aluno al) { 
+    public void inserirAlunoPorUltimo(Aluno al) {
         // verifica, usando o "buscar", se o aluno já é cadastrado.
         LSENode aux = this.primeiro;
         LSENode result = this.buscar(al);
-        if (result != null){
+        if (result != null) {
             System.out.println("Aluno já está na lista!");
         } else {
             // insere um novo aluno no final de lista de alunos
@@ -44,7 +44,7 @@ public class LSEAluno {
             if (this.isEmpty() == true) {
                 this.primeiro = novo;
             } else {
-                while (aux.getProx() != null){
+                while (aux.getProx() != null) {
                     aux = aux.getProx();
                 }
                 aux.setProx(novo);
@@ -70,10 +70,10 @@ public class LSEAluno {
         }
     }
 
-    public void removerPrimeiro(){
+    public void removerPrimeiro() {
         LSENode aux = this.primeiro;
 
-        if(this.isEmpty() == true){
+        if (this.isEmpty() == true) {
             System.out.println("Lista Vazia!");
         } else {
             aux = aux.getProx();
@@ -81,14 +81,14 @@ public class LSEAluno {
         }
     }
 
-    public void removerUltimo(){
+    public void removerUltimo() {
         LSENode aux = this.primeiro;
         LSENode provUltimo = null;
 
-        if(this.isEmpty() == true){
+        if (this.isEmpty() == true) {
             System.out.println("Lista Vazia!");
         } else {
-            while (aux.getProx() != null){
+            while (aux.getProx() != null) {
                 provUltimo = aux;
                 aux = aux.getProx();
             }
@@ -110,16 +110,16 @@ public class LSEAluno {
         }
     }
 
-    public void exibirEspecifico(Aluno al){
+    public void exibirEspecifico(Aluno al) {
         if (this.isEmpty() == true) {
             System.out.println("Lista vazia!");
         } else if (al.getMatr() != null) {
-            System.out.println(al.getMatr() + " " +  al.getNome() + " " + al.getMedia() + " " + al.getFaltas());
+            System.out.println(al.getMatr() + " " + al.getNome() + " " + al.getMedia() + " " + al.getFaltas());
         }
-        
+
     }
 
-    public void inserirNovaMedia(String nome, String matr, double media){
+    public void inserirNovaMedia(String nome, String matr, double media) {
         Aluno aluno = new Aluno(matr, nome);
         if (this.isEmpty() == true) {
             System.out.println("Aluno inválido!");
@@ -129,7 +129,7 @@ public class LSEAluno {
         System.out.println(aluno.getMedia());
     }
 
-    public void inserirNovasFaltas(Aluno al, int faltas){
+    public void inserirNovasFaltas(Aluno al, int faltas) {
         if (this.isEmpty() == true) {
             System.out.println("Aluno inválido!");
         } else if (al.getMatr() != null) {
@@ -138,7 +138,7 @@ public class LSEAluno {
         System.out.println(al.getFaltas());
     }
 
-    public void removerAlunoEspecifico(){
+    public void removerAlunoEspecifico() {
         Aluno proc = new Aluno(matr);
         LSENode atual, anterior;
         if (this.isEmpty() == true) {
@@ -158,18 +158,16 @@ public class LSEAluno {
                 anterior = null;
                 atual = this.primeiro;
                 while (atual != null) {
-                   if (atual.getInfo().compareTo(proc) != 0 ) {
-                    anterior = atual;
-                    atual = atual.getProx();
-                   }
-                   else {
-                       break; // achou!!!
-                   }
+                    if (atual.getInfo().compareTo(proc) != 0) {
+                        anterior = atual;
+                        atual = atual.getProx();
+                    } else {
+                        break; // achou!!!
+                    }
                 }
                 if (atual == null) {
                     System.out.println("Valor não pertence a lidta!");
-                }
-                else {
+                } else {
                     anterior.setProx(atual.getProx());
                     System.out.println("Remoção efetuada!");
                 }
