@@ -1,12 +1,14 @@
 import java.util.Scanner;
 
 public class TesteListaEncadeada {
+        private LSENode primeiro;
 
         public static void main(String[] args) {
                 Scanner in = new Scanner(System.in);
                 LSEAluno turmaM = new LSEAluno();
                 LSEAluno turmaP = new LSEAluno();
-                LSEAluno turmaUniao = new LSEAluno();
+                // LSEAluno turmaUniao = new LSEAluno();
+                LSEAluno outra;
                 int op;
                 Aluno al;
                 String nome, matr;
@@ -25,7 +27,7 @@ public class TesteListaEncadeada {
                                         matr = in.nextLine();
                                         al = new Aluno(matr, nome);
                                         turmaM.inserirAluno(al);
-                                        turmaUniao.inserirAlunoPorUltimo(al);
+                                        // turmaUniao.inserirAlunoPorUltimo(al);
                                         break;
                                 case 2: // cadastrar aluno no final
                                         System.out.print("Informe o nome do aluno: ");
@@ -34,7 +36,7 @@ public class TesteListaEncadeada {
                                         matr = in.nextLine();
                                         al = new Aluno(matr, nome);
                                         turmaM.inserirAlunoPorUltimo(al);
-                                        turmaUniao.inserirAlunoPorUltimo(al);
+                                        // turmaUniao.inserirAlunoPorUltimo(al);
                                         break;
                                 case 3:
                                         turmaM.exibir();
@@ -79,6 +81,7 @@ public class TesteListaEncadeada {
                                         matr = in.nextLine();
                                         al = new Aluno(matr, nome);
                                         turmaP.inserirAluno(al);
+                                        // turmaUniao.inserirAlunoPorUltimo(al);
                                         break;
                                 case 9: // cadastrar aluno no final
                                         System.out.print("Informe o nome do aluno: ");
@@ -87,6 +90,7 @@ public class TesteListaEncadeada {
                                         matr = in.nextLine();
                                         al = new Aluno(matr, nome);
                                         turmaP.inserirAlunoPorUltimo(al);
+                                        // turmaUniao.inserirAlunoPorUltimo(al);
                                         break;
                                 case 10:
                                         turmaP.exibir();
@@ -125,7 +129,9 @@ public class TesteListaEncadeada {
                                         turmaP.removerAlunoEspecifico(matr);
                                         break;
                                 case 15: // método para unir duas listas
-                                        turmaUniao.exibir();
+                                         // turmaUniao.exibir();
+                                        outra.criarUniao(turmaM, turmaP);
+
                                         break;
                                 case 0:
                                         System.out.println("Programa encerrado!");
@@ -155,5 +161,47 @@ public class TesteListaEncadeada {
                 System.out.println("15 - Exibir lista geral das turmas");
                 System.out.println("0 - Sair do programa");
                 System.out.print("Digite a opção desejada: ");
+        }
+
+        public boolean isEmpty() {
+            // testa se a lista está vazia
+            if (this.primeiro == null) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public LSEAluno criarCopia() {
+                Aluno novoAl, alAux;
+                LSEAluno outra = new LSEAluno();
+                LSENode aux;
+
+                if (this.isEmpty() == true) {
+                        return outra;
+                } else {
+                        aux = this.primeiro;
+                        while (aux != null) {
+                                alAux = aux.getInfoA();
+                                novoAl = new Aluno(alAux.getMatr(), alAux.getNome(), alAux.getMedia(), alAux.getFaltas());
+                                outra.inserirAlunoPorUltimo(novoAl);
+                                aux = aux.getProx();
+                        }
+                        return outra;
+                }
+        }
+
+        public void criarUniao(LSEAluno listaPessoas1, LSEAluno listaPessoas2) {
+                // Aluno novoAl, alAux;
+                LSEAluno outra;
+                // LSENode aux;
+
+                if (this.isEmpty() == true) {
+                        System.out.println("Lista vazia!");
+                } else {
+                        listaPessoas1.criarCopia();
+                        listaPessoas2.criarCopia();
+                        outra.exibir();
+                }
         }
 }

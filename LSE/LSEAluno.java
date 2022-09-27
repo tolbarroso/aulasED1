@@ -185,12 +185,26 @@ public class LSEAluno {
         } else {
             aux = this.primeiro;
             while (aux != null) {
-                alAux = aux.getInfo();
+                alAux = aux.getInfoA();
                 novoAl = new Aluno(alAux.getMatr(), alAux.getNome(), alAux.getMedia(), alAux.getFaltas());
                 outra.inserirAlunoPorUltimo(novoAl);
                 aux = aux.getProx();
             }
             return outra;
+        }
+    }
+
+    public void criarUniao(LSEAluno listaPessoas1, LSEAluno listaPessoas2){
+        //Aluno novoAl, alAux;
+        LSEAluno outra;
+        //LSENode aux;
+
+        if (this.isEmpty() == true) {
+            System.out.println("Lista vazia!");
+        } else {
+            listaPessoas1.criarCopia();
+            listaPessoas2.criarCopia();
+            outra.exibir();
         }
     }
 }
