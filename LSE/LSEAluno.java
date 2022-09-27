@@ -60,7 +60,7 @@ public class LSEAluno {
         } else {
             aux = this.primeiro;
             while (aux != null) {
-                if (aux.getInfo().compareTo(al) == 0) {
+                if (aux.getInfoA().compareTo(al) == 0) {
                     return aux;
                 } else {
                     aux = aux.getProx();
@@ -144,21 +144,21 @@ public class LSEAluno {
         if (this.isEmpty() == true) {
             System.out.println("Lista vazia!");
         } else if (this.primeiro.getProx() == null) {
-            if (proc.compareTo(this.primeiro.getInfo()) == 0) {
+            if (proc.compareTo(this.primeiro.getInfoA()) == 0) {
                 this.primeiro = null;
                 System.out.println("Remoção efetuada");
             } else {
                 System.out.println("Aluno não encontrado!");
             }
         } else { // lista com mais de um nó
-            if (proc.compareTo(this.primeiro.getInfo()) == 0) { // remoção do primeiro
+            if (proc.compareTo(this.primeiro.getInfoA()) == 0) { // remoção do primeiro
                 this.primeiro = this.primeiro.getProx();
                 System.out.println("Remoção efetuada");
             } else {
                 anterior = null;
                 atual = this.primeiro;
                 while (atual != null) {
-                    if (atual.getInfo().compareTo(proc) != 0) {
+                    if (atual.getInfoA().compareTo(proc) != 0) {
                         anterior = atual;
                         atual = atual.getProx();
                     } else {
