@@ -194,17 +194,43 @@ public class LSEAluno {
         }
     }
 
-    public void criarUniao(LSEAluno listaPessoas1, LSEAluno listaPessoas2){
-        //Aluno novoAl, alAux;
-        LSEAluno outra;
-        //LSENode aux;
+    /*public LSEAluno criarUniao(LSEAluno data2) {
+
+        LSEAluno listaUniao;
+        listaUniao = this.criarCopia();
+
+        LSENode aux = data2.primeiro;
+
+        while (aux != null) {
+            Aluno tempStudent = new Aluno((aux.getInfo()).getMatr(), aux.getInfo().getNome());
+            listaUniao.inserirAlunoPorUltimo(tempStudent);
+            aux = aux.getProx();
+
+        }
+
+        return listaUniao;
+
+    }*/
+
+    public LSEAluno criarUniao() {
+        Aluno novoAl, alAux, novoAl2, alAux2;
+        LSEAluno outra = new LSEAluno();
+        LSENode aux, aux2;
 
         if (this.isEmpty() == true) {
-            System.out.println("Lista vazia!");
+            return outra;
         } else {
-            listaPessoas1.criarCopia();
-            listaPessoas2.criarCopia();
-            outra.exibir();
-        }
+            novoAl = new Aluno(alAux.getMatr(), alAux.getNome());
+            outra.inserirAlunoPorUltimo(novoAl); 
+            aux = aux.getProx(); 
+    
+            while (aux2 != null) { 
+                alAux2 = aux2.getInfoA(); 
+                novoAl2 = new Aluno(alAux2.getMatr(), alAux2.getNome());  
+                outra.inserirAlunoPorUltimo(novoAl2);
+                aux2 = aux2.getProx(); 
+            } 	
+            return outra; 
+        } 
     }
 }

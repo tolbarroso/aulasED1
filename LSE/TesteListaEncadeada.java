@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
 public class TesteListaEncadeada {
-        private LSENode primeiro;
-
         public static void main(String[] args) {
                 Scanner in = new Scanner(System.in);
                 LSEAluno turmaM = new LSEAluno();
@@ -161,47 +159,5 @@ public class TesteListaEncadeada {
                 System.out.println("15 - Exibir lista geral das turmas");
                 System.out.println("0 - Sair do programa");
                 System.out.print("Digite a opção desejada: ");
-        }
-
-        public boolean isEmpty() {
-            // testa se a lista está vazia
-            if (this.primeiro == null) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        public LSEAluno criarCopia() {
-                Aluno novoAl, alAux;
-                LSEAluno outra = new LSEAluno();
-                LSENode aux;
-
-                if (this.isEmpty() == true) {
-                        return outra;
-                } else {
-                        aux = this.primeiro;
-                        while (aux != null) {
-                                alAux = aux.getInfoA();
-                                novoAl = new Aluno(alAux.getMatr(), alAux.getNome(), alAux.getMedia(), alAux.getFaltas());
-                                outra.inserirAlunoPorUltimo(novoAl);
-                                aux = aux.getProx();
-                        }
-                        return outra;
-                }
-        }
-
-        public void criarUniao(LSEAluno listaPessoas1, LSEAluno listaPessoas2) {
-                // Aluno novoAl, alAux;
-                LSEAluno outra;
-                // LSENode aux;
-
-                if (this.isEmpty() == true) {
-                        System.out.println("Lista vazia!");
-                } else {
-                        listaPessoas1.criarCopia();
-                        listaPessoas2.criarCopia();
-                        outra.exibir();
-                }
         }
 }
