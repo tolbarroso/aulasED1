@@ -1,4 +1,4 @@
-package lista3;
+package LSE;
 
 import java.util.Scanner;
 
@@ -26,7 +26,7 @@ determinado momento, não haja clientes esperando atendimento.
 Caso isso ocorra, o programa deve emitir uma mensagem informando 
 que não há clientes na fila de espera. */
 
-public class Questao2 {
+public class Lista3Questao2 {
     
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);

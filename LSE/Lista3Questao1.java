@@ -1,4 +1,4 @@
-package lista3;
+package LSE;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ slides de tipos abstratos de dados postados no classroom.
 OBS: O tamanho MÁXIMO da Queue deve ser informado pelo usuário 
 e passado para o construtor, como parâmetro, no instante da criação da Queue. */
 
-public class Questao1 {
+public class Lista3Questao1 {
     
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);

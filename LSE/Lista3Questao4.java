@@ -1,11 +1,11 @@
-package lista3;
+package LSE;
 
 import java.util.Scanner;
 
 /* Implemente uma pequena aplicação para testar o TAD Deque implementado.
 A aplicação deve criar um Deque de números inteiros. A aplicação ter um 
 menu e um loop para permitir ao usuário operar com o Deque. */
-public class Questao4 {
+public class Lista3Questao4 {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
