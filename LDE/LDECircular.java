@@ -63,11 +63,15 @@ public class LDECircular <T extends Comparable<T>> {
             this.prim.setAnt(novo);
             this.prim = novo;
             this.qtd++;
+            this.prim.setAnt(this.ult);
+            this.ult.setProx(this.prim);
         } else if (valor.compareTo(this.ult.getInfo()) < 0) { // Lista com mais de um nó. Insere depois do último
             this.ult.setProx(novo);
             novo.setAnt(this.ult);
             this.ult = novo;
             this.qtd++;
+            this.prim.setAnt(this.ult);
+            this.ult.setProx(this.prim);
         } else { // Lista com mais de um nó. Insere no meio
             aux = this.prim.getProx();
             while (true) {
