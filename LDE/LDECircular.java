@@ -49,6 +49,50 @@ public class LDECircular <T extends Comparable<T>> {
         }
     }
 
+    public void inserirOrdenadoDecrescente(T valor) { // Insere um novo nó na lista
+        LDENode<T> novo = new LDENode(valor);
+        LDENode<T> aux, proximo;
+        if (this.isEmpty() == true) { // Lista vazia?
+            this.prim = novo;
+            this.ult = novo;
+            this.qtd++;
+            this.prim.setAnt(this.ult);
+            this.ult.setProx(this.prim);
+        } else if (valor.compareTo(this.prim.getInfo()) > 0) { // Lista com um nó. Insere antes do primeiro
+            novo.setProx(this.prim);
+            this.prim.setAnt(novo);
+            this.prim = novo;
+            this.qtd++;
+        } else if (valor.compareTo(this.ult.getInfo()) < 0) { // Lista com mais de um nó. Insere depois do último
+            this.ult.setProx(novo);
+            novo.setAnt(this.ult);
+            this.ult = novo;
+            this.qtd++;
+        } else { // Lista com mais de um nó. Insere no meio
+            aux = this.prim.getProx();
+            while (true) {
+                if (valor.compareTo(aux.getInfo()) == 0) { // Verifica repetição. Insere apos a repetição
+                    proximo = aux.getProx();
+                    proximo.setAnt(novo);
+                    novo.setAnt(aux);
+                    novo.setProx(proximo);
+                    this.qtd++;
+                    break;
+                } else if (valor.compareTo(aux.getInfo()) < 0) { // Insere no meio da lista
+                    proximo = aux.getProx();
+                    proximo.setAnt(novo);
+                    aux.setProx(novo);
+                    novo.setAnt(aux);
+                    novo.setProx(proximo);
+                    this.qtd++;
+                    break;
+                } else {
+                    aux = aux.getAnt();
+                }
+            }
+        }
+    }
+    
     public void exibirTodos() {
         LDENode<T> aux;
         if (this.isEmpty() == true) {
@@ -149,6 +193,30 @@ public class LDECircular <T extends Comparable<T>> {
             anterior.setProx(proximo);
             proximo.setAnt(anterior);
             this.qtd--;
+        }
+    }
+
+    public void remover2(){
+        LDENode<T> anterior, proximo;
+        LDENode<T> aux;
+        
+
+        else { // lista com mais de um nó
+            aux = this.buscar(valor);
+            if (aux != null) {
+                anterior = aux.getAnt();
+                proximo = aux.getProx();
+                anterior.setProx(proximo);
+                proximo.setAnt(anterior);
+                this.qtd--;
+                if (aux == this.prim) {
+                    this.prim = proximo;
+                } else if (aux == this.ult) {
+                    this.ult = anterior;
+                }
+            } else {
+
+            }
         }
     }
 }
