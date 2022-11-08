@@ -1,6 +1,6 @@
 package LDE;
 
-public class LDECircular <T extends Comparable<T>> {
+public class LDECircular<T extends Comparable<T>> {
     private LDENode<T> prim;
     private LDENode<T> ult;
     private int qtd;
@@ -13,7 +13,7 @@ public class LDECircular <T extends Comparable<T>> {
         }
     }
 
-    public void inserirNoInicio (T valor) {
+    public void inserirNoInicio(T valor) {
         LDENode<T> novo = new LDENode(valor);
         if (this.isEmpty() == true) {
             this.prim = novo;
@@ -31,7 +31,7 @@ public class LDECircular <T extends Comparable<T>> {
         }
     }
 
-    public void inserirNoFinal (T valor) {
+    public void inserirNoFinal(T valor) {
         LDENode<T> novo = new LDENode(valor);
         if (this.isEmpty() == true) {
             this.prim = novo;
@@ -49,54 +49,54 @@ public class LDECircular <T extends Comparable<T>> {
         }
     }
 
-    public void inserirOrdenadoDecrescente(T valor) { // Insere um novo nó na lista
+    public void inserirOrdenadoDecrescenteSemRepetidos(T valor) {
         LDENode<T> novo = new LDENode(valor);
-        LDENode<T> aux, proximo;
-        if (this.isEmpty() == true) { // Lista vazia?
+        LDENode<T> aux, anterior;
+        if (this.isEmpty() == true) { // inserir na lista vazia
             this.prim = novo;
             this.ult = novo;
             this.qtd++;
             this.prim.setAnt(this.ult);
             this.ult.setProx(this.prim);
-        } else if (valor.compareTo(this.prim.getInfo()) > 0) { // Lista com um nó. Insere antes do primeiro
+        } else if (valor.compareTo(this.prim.getInfo()) == 0) {
+            System.out.println("Valor repetido. Inserção não efetuada!");
+        } else if (valor.compareTo(this.prim.getInfo()) > 0) { // inserir antes do primeiro
             novo.setProx(this.prim);
             this.prim.setAnt(novo);
             this.prim = novo;
             this.qtd++;
             this.prim.setAnt(this.ult);
             this.ult.setProx(this.prim);
-        } else if (valor.compareTo(this.ult.getInfo()) < 0) { // Lista com mais de um nó. Insere depois do último
+        } else if (valor.compareTo(this.ult.getInfo()) == 0) {
+            System.out.println("Valor repetido. Inserção não efetuada!");
+        } else if (valor.compareTo(this.ult.getInfo()) < 0) { // inserir depois do último
             this.ult.setProx(novo);
             novo.setAnt(this.ult);
             this.ult = novo;
             this.qtd++;
             this.prim.setAnt(this.ult);
             this.ult.setProx(this.prim);
-        } else { // Lista com mais de um nó. Insere no meio
-            aux = this.prim.getProx();
+        } else {
+            aux = this.prim.getProx(); // segundo
             while (true) {
-                if (valor.compareTo(aux.getInfo()) == 0) { // Verifica repetição. Insere apos a repetição
-                    proximo = aux.getProx();
-                    proximo.setAnt(novo);
-                    novo.setAnt(aux);
-                    novo.setProx(proximo);
-                    this.qtd++;
+                if (valor.compareTo(aux.getInfo()) == 0) {
+                    System.out.println("Valor repetido. Inserção não efetuada!");
                     break;
-                } else if (valor.compareTo(aux.getInfo()) < 0) { // Insere no meio da lista
-                    proximo = aux.getProx();
-                    proximo.setAnt(novo);
-                    aux.setProx(novo);
-                    novo.setAnt(aux);
-                    novo.setProx(proximo);
+                } else if (valor.compareTo(aux.getInfo()) > 0) { // achei local de inserção
+                    anterior = aux.getAnt();
+                    anterior.setProx(novo);
+                    aux.setAnt(novo);
+                    novo.setProx(aux);
+                    novo.setAnt(anterior);
                     this.qtd++;
                     break;
                 } else {
-                    aux = aux.getAnt();
+                    aux = aux.getProx();
                 }
             }
         }
     }
-    
+
     public void exibirTodos() {
         LDENode<T> aux;
         if (this.isEmpty() == true) {
@@ -111,7 +111,7 @@ public class LDECircular <T extends Comparable<T>> {
         System.out.println(" ");
     }
 
-    public void exibirInverso(){
+    public void exibirInverso() {
         LDENode<T> aux;
         if (this.isEmpty() == true) {
             System.out.println("Lista Vazia!");
@@ -172,7 +172,7 @@ public class LDECircular <T extends Comparable<T>> {
         }
     }
 
-    public void remover(T valor) { // Remove um valor específico
+    public void remover (T valor) { // Remove um valor específico
         LDENode<T> retorno = this.buscar(valor);
         LDENode<T> anterior, proximo;
         if (retorno == null) {
@@ -200,12 +200,19 @@ public class LDECircular <T extends Comparable<T>> {
         }
     }
 
-    public void remover2(){
-        LDENode<T> anterior, proximo;
-        LDENode<T> aux;
-        
-
-        else { // lista com mais de um nó
+    public void remover2 (T valor) {
+        LDENode<T> aux, anterior, proximo;
+        if (this.isEmpty() == true) { // Caso 1: lista vazia!
+            System.out.println("Lista vazia");
+        } else if (this.qtd == 1) { // Caso 2: lista com apenas um nó
+            if (valor.compareTo(this.prim.getInfo()) == 0) {
+                this.prim = null;
+                this.ult = null;
+                this.qtd--;
+            } else {
+                System.out.println("Valor não encontrado");
+            }
+        } else { // Caso 3: caso geral (lista com mais de um nó)
             aux = this.buscar(valor);
             if (aux != null) {
                 anterior = aux.getAnt();
@@ -219,7 +226,7 @@ public class LDECircular <T extends Comparable<T>> {
                     this.ult = anterior;
                 }
             } else {
-
+                System.out.println("Valor não encontrado");
             }
         }
     }
