@@ -97,6 +97,86 @@ public class LDECircular<T extends Comparable<T>> {
         }
     }
 
+    public void inserirOrdenadoDecrescenteComRepetidos(T valor) {
+        LDENode<T> novo = new LDENode(valor);
+        LDENode<T> aux, anterior;
+        if (this.isEmpty() == true) { // inserir na lista vazia
+            this.prim = novo;
+            this.ult = novo;
+            this.qtd++;
+            this.prim.setAnt(this.ult);
+            this.ult.setProx(this.prim);
+        } else if (valor.compareTo(this.prim.getInfo()) >= 0) { // inserir depois do primeiro
+            novo.setAnt(this.prim);
+            this.prim.setProx(novo);
+            this.qtd++;
+            this.prim.setAnt(this.ult);
+            this.ult.setProx(this.prim);
+        } else if (valor.compareTo(this.ult.getInfo()) <= 0) { // inserir depois do último
+            this.ult.setProx(novo);
+            novo.setAnt(this.ult);
+            this.ult = novo;
+            this.qtd++;
+            this.prim.setAnt(this.ult);
+            this.ult.setProx(this.prim);
+        } else {
+            aux = this.prim.getProx(); // segundo
+            while (true) {
+                if (valor.compareTo(aux.getInfo()) >= 0) { // achei local de inserção
+                    anterior = aux.getAnt();
+                    anterior.setProx(novo);
+                    aux.setAnt(novo);
+                    novo.setProx(aux);
+                    novo.setAnt(anterior);
+                    this.qtd++;
+                    break;
+                } else {
+                    aux = aux.getProx();
+                }
+            }
+        }
+    }
+
+    public void inserirOrdenadoCrescenteComRepetidos(T valor) {
+        LDENode<T> novo = new LDENode(valor);
+        LDENode<T> aux, anterior;
+        if (this.isEmpty() == true) { // inserir na lista vazia
+            this.prim = novo;
+            this.ult = novo;
+            this.qtd++;
+            this.prim.setAnt(this.ult);
+            this.ult.setProx(this.prim);
+        } else if (valor.compareTo(this.prim.getInfo()) <= 0) { // inserir antes do primeiro
+            novo.setProx(this.prim);
+            this.prim.setAnt(novo);
+            this.prim = novo;
+            this.qtd++;
+            this.prim.setAnt(this.ult);
+            this.ult.setProx(this.prim);
+        } else if (valor.compareTo(this.ult.getInfo()) >= 0) { // inserir antes do último
+            this.ult.setAnt(novo);
+            novo.setProx(this.ult);
+            this.qtd++;
+            this.prim.setAnt(this.ult);
+            this.ult.setProx(this.prim);
+        } else {
+            aux = this.prim.getProx(); // segundo
+            while (true) {
+                if (valor.compareTo(aux.getInfo()) <= 0) { // achei local de inserção
+                    anterior = aux.getAnt();
+                    anterior.setProx(novo);
+                    aux.setAnt(novo);
+                    novo.setProx(aux);
+                    novo.setAnt(anterior);
+                    this.qtd++;
+                    break;
+                } else {
+                    aux = aux.getProx();
+                }
+            }
+        }
+    }
+
     public void exibirTodos() {
         LDENode<T> aux;
         if (this.isEmpty() == true) {
