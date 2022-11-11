@@ -1,4 +1,4 @@
-package LDE;
+package LDEC;
 
 import java.util.Scanner;
 

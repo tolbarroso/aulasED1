@@ -1,8 +1,8 @@
-package LDE;
+package LDEC;
 
 public class LDECircular<T extends Comparable<T>> {
-    private LDENode<T> prim;
-    private LDENode<T> ult;
+    private LDECNode<T> prim;
+    private LDECNode<T> ult;
     private int qtd;
 
     public boolean isEmpty() {
@@ -14,7 +14,7 @@ public class LDECircular<T extends Comparable<T>> {
     }
 
     public void inserirNoInicio(T valor) {
-        LDENode<T> novo = new LDENode(valor);
+        LDECNode<T> novo = new LDECNode(valor);
         if (this.isEmpty() == true) {
             this.prim = novo;
             this.ult = novo;
@@ -32,7 +32,7 @@ public class LDECircular<T extends Comparable<T>> {
     }
 
     public void inserirNoFinal(T valor) {
-        LDENode<T> novo = new LDENode(valor);
+        LDECNode<T> novo = new LDECNode(valor);
         if (this.isEmpty() == true) {
             this.prim = novo;
             this.ult = novo;
@@ -50,8 +50,8 @@ public class LDECircular<T extends Comparable<T>> {
     }
 
     public void inserirOrdenadoDecrescenteSemRepetidos(T valor) {
-        LDENode<T> novo = new LDENode(valor);
-        LDENode<T> aux, anterior;
+        LDECNode<T> novo = new LDECNode(valor);
+        LDECNode<T> aux, anterior;
         if (this.isEmpty() == true) { // inserir na lista vazia
             this.prim = novo;
             this.ult = novo;
@@ -98,8 +98,8 @@ public class LDECircular<T extends Comparable<T>> {
     }
 
     public void inserirOrdenadoDecrescenteComRepetidos(T valor) {
-        LDENode<T> novo = new LDENode(valor);
-        LDENode<T> aux, anterior;
+        LDECNode<T> novo = new LDECNode(valor);
+        LDECNode<T> aux, anterior;
         if (this.isEmpty() == true) { // inserir na lista vazia
             this.prim = novo;
             this.ult = novo;
@@ -138,8 +138,8 @@ public class LDECircular<T extends Comparable<T>> {
     }
 
     public void inserirOrdenadoCrescenteComRepetidos(T valor) {
-        LDENode<T> novo = new LDENode(valor);
-        LDENode<T> aux, anterior;
+        LDECNode<T> novo = new LDECNode(valor);
+        LDECNode<T> aux, anterior;
         if (this.isEmpty() == true) { // inserir na lista vazia
             this.prim = novo;
             this.ult = novo;
@@ -178,7 +178,7 @@ public class LDECircular<T extends Comparable<T>> {
     }
 
     public void exibirTodos() {
-        LDENode<T> aux;
+        LDECNode<T> aux;
         if (this.isEmpty() == true) {
             System.out.println("Lista Vazia!");
         } else {
@@ -192,7 +192,7 @@ public class LDECircular<T extends Comparable<T>> {
     }
 
     public void exibirInverso() {
-        LDENode<T> aux;
+        LDECNode<T> aux;
         if (this.isEmpty() == true) {
             System.out.println("Lista Vazia!");
         } else {
@@ -205,8 +205,8 @@ public class LDECircular<T extends Comparable<T>> {
         System.out.println(" ");
     }
 
-    public LDENode<T> buscar(T valor) { // busca simples
-        LDENode<T> aux = this.prim;
+    public LDECNode<T> buscar(T valor) { // busca simples
+        LDECNode<T> aux = this.prim;
         if (this.isEmpty() == true) {
             return null;
         }
@@ -253,8 +253,8 @@ public class LDECircular<T extends Comparable<T>> {
     }
 
     public void remover (T valor) { // Remove um valor específico
-        LDENode<T> retorno = this.buscar(valor);
-        LDENode<T> anterior, proximo;
+        LDECNode<T> retorno = this.buscar(valor);
+        LDECNode<T> anterior, proximo;
         if (retorno == null) {
             System.out.println("valor não encontrado!");
         } else if (this.qtd == 1) {
@@ -281,7 +281,7 @@ public class LDECircular<T extends Comparable<T>> {
     }
 
     public void remover2 (T valor) {
-        LDENode<T> aux, anterior, proximo;
+        LDECNode<T> aux, anterior, proximo;
         if (this.isEmpty() == true) { // Caso 1: lista vazia!
             System.out.println("Lista vazia");
         } else if (this.qtd == 1) { // Caso 2: lista com apenas um nó
