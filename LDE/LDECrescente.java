@@ -57,10 +57,141 @@ public class LDECrescente<T extends Comparable<T>> {
                 } else {
                     aux = aux.getProx();
                 }
-
             }
         }
     }
+
+    public void inserirOrdenadoDecrescenteSemRepetidos(T valor) {
+        LDENode<T> novo = new LDENode(valor);
+        LDENode<T> aux, anterior;
+        if (this.isEmpty() == true) { // inserir na lista vazia
+            this.prim = novo;
+            this.ult = novo;
+            this.qtd++;
+        } else if (valor.compareTo(this.prim.getInfo()) == 0) {
+            System.out.println("Valor repetido. Inserção não efetuada!");
+        } else if (valor.compareTo(this.prim.getInfo()) > 0) { // inserir antes do primeiro
+            novo.setProx(this.prim);
+            this.prim.setAnt(novo);
+            this.prim = novo;
+            this.qtd++;
+        } else if (valor.compareTo(this.ult.getInfo()) == 0) {
+            System.out.println("Valor repetido. Inserção não efetuada!");
+        } else if (valor.compareTo(this.ult.getInfo()) < 0) { // inserir depois do último
+            this.ult.setProx(novo);
+            novo.setAnt(this.ult);
+            this.ult = novo;
+            this.qtd++;
+        } else {
+            aux = this.prim.getProx(); // segundo
+            while (true) {
+                if (valor.compareTo(aux.getInfo()) == 0) {
+                    System.out.println("Valor repetido. Inserção não efetuada!");
+                    break;
+                } else if (valor.compareTo(aux.getInfo()) > 0) { // achei local de inserção
+                    anterior = aux.getAnt();
+                    anterior.setProx(novo);
+                    aux.setAnt(novo);
+                    novo.setProx(aux);
+                    novo.setAnt(anterior);
+                    this.qtd++;
+                    break;
+                } else {
+                    aux = aux.getProx();
+                }
+            }
+        }
+    }
+
+    public void inserirOrdenadoDecrescenteComRepetidos(T valor) {
+        LDENode<T> novo = new LDENode(valor);
+        LDENode<T> aux, anterior;
+        if (this.isEmpty() == true) { // inserir na lista vazia
+            this.prim = novo;
+            this.ult = novo;
+            this.qtd++;
+        } else if (valor.compareTo(this.prim.getInfo()) > 0) { // inserir antes do primeiro
+            novo.setProx(this.prim);
+            this.prim.setAnt(novo);
+            this.prim = novo;
+            this.qtd++;
+        } else if (valor.compareTo(this.prim.getInfo()) == 0) { // inserir depois do repetido
+            novo.setAnt(this.prim);
+            this.prim.setProx(novo);
+            this.qtd++;
+        } else if (valor.compareTo(this.ult.getInfo()) == 0) { // inserir depois do repetido
+            this.ult.setProx(novo);
+            novo.setAnt(this.ult);
+            this.ult = novo;
+            this.qtd++;
+        } else if (valor.compareTo(this.ult.getInfo()) < 0) { // inserir antes do último
+            this.ult.setAnt(novo);
+            novo.setProx(this.ult);
+            this.qtd++;
+        } else {
+            aux = this.prim.getProx(); // segundo
+            while (true) {
+                if (valor.compareTo(aux.getInfo()) <= 0) { // achei local de inserção
+                    anterior = aux.getAnt();
+                    anterior.setProx(novo);
+                    aux.setAnt(novo);
+                    novo.setProx(aux);
+                    novo.setAnt(anterior);
+                    this.qtd++;
+                    break;
+                } else {
+                    aux = aux.getProx();
+                }
+            }
+        }
+    }
+
+    public void inserirOrdenadoCrescenteComRepetidos(T valor) {
+        LDENode<T> novo = new LDENode(valor);
+        LDENode<T> aux, anterior;
+        if (this.isEmpty() == true) { // Lista vazia?
+            this.prim = novo;
+            this.ult = novo;
+            this.qtd++;
+        } else if (valor.compareTo(this.prim.getInfo()) <= 0) { // Lista com um nó. Insere antes do primeiro
+            novo.setProx(this.prim);
+            this.prim.setAnt(novo);
+            this.prim = novo;
+            this.qtd++;
+        } /*else if (valor.compareTo(this.prim.getInfo()) == 0) { // Verifica repetição e insere depois
+            novo.setAnt(this.prim);
+            this.prim.setProx(novo);
+            this.qtd++;
+        }*/ else if (valor.compareTo(this.ult.getInfo()) >= 0) { // Lista com mais de um nó. Insere depois do último
+            this.ult.setProx(novo);
+            novo.setAnt(this.ult);
+            this.ult = novo;
+            this.qtd++;
+        } /*else if (valor.compareTo(this.ult.getInfo()) == 0) { // Verifica repetição e insere antes
+            this.ult.setAnt(novo);
+            novo.setProx(this.ult);
+            this.qtd++;
+        }*/ else { // Lista com mais de um nó. Insere no meio
+            aux = this.prim.getProx();
+            while (true) {
+                if (valor.compareTo(aux.getInfo()) == 0) { // Verifica repetição
+                    System.out.println("Valor repetido. Inserção não efetuada.");
+                    break;
+                } else if (valor.compareTo(aux.getInfo()) < 0) { // Insere no meio da lista
+                    anterior = aux.getAnt();
+                    anterior.setProx(novo);
+                    aux.setAnt(novo);
+                    novo.setProx(aux);
+                    novo.setAnt(anterior);
+                    this.qtd++;
+                    break;
+                } else {
+                    aux = aux.getProx();
+                }
+            }
+        }
+    }
+
 
     private LDENode<T> buscar(T valor) { // Busca o nó na lista
         LDENode<T> aux;

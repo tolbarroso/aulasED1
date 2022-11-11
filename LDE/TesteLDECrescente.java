@@ -17,12 +17,12 @@ public class TesteLDECrescente {
                 case 1:
                     System.out.print("Informe o valor a ser inserido: ");
                     val = in.nextInt();
-                    lista.inserir(val);
+                    lista.inserirOrdenadoCrescenteComRepetidos(val);
                     break;
                 case 2:
                     System.out.print("Informe o valor a ser removido: ");
                     val = in.nextInt();
-                    lista.remover(val);
+                    lista.inserirOrdenadoDecrescenteComRepetidos(val);
                     break;
                 case 3:
                     lista.exibirTodos();
@@ -30,7 +30,7 @@ public class TesteLDECrescente {
                 case 4:
                     System.out.println("Informe valor a ser buscado:");
                     val = in.nextInt();
-                    //lista.buscar(val);
+                    lista.inserirOrdenadoDecrescenteSemRepetidos(val);
                     break;
                 case 0:
                     System.out.println("Programa Encerrado!");
