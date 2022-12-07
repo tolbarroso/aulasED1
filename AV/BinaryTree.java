@@ -13,7 +13,7 @@ public class BinaryTree<T extends Comparable<T>> {
         } else {
             aux = this.raiz;
             while (true) {
-                if (valor.compareTo(aux.getInfo()) == 0) {
+                if (valor.compareTo(aux.getInfo()) == 0) { // repetição
                     System.out.println("Valor repetido. Inserção não efetuada");
                     break;
                 } else if (valor.compareTo(aux.getInfo()) < 0) { // inserção do lado esquerdo
