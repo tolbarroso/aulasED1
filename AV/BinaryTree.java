@@ -13,7 +13,7 @@ public class BinaryTree<T extends Comparable<T>> {
         } else {
             aux = this.raiz;
             while (true) {
-                if (valor.compareTo(aux.getInfo()) == 0) { // repetição
+                if (valor.compareTo(aux.getInfo()) == 0) {
                     System.out.println("Valor repetido. Inserção não efetuada");
                     break;
                 } else if (valor.compareTo(aux.getInfo()) < 0) { // inserção do lado esquerdo
@@ -37,7 +37,15 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    public TreeNode<T> removeNode(TreeNode<T> r, T value) {
+    public void insert(T value) {
+        if (this.isEmpty() == true) {
+            this.raiz = new TreeNode(value);
+        } else {
+            this.raiz.insertNode(value);
+        }
+    }
+
+    private TreeNode<T> removeNode(TreeNode<T> r, T value) {
         if (r != null) {
             if (value.compareTo(r.getInfo()) == 0) {
                 TreeNode<T> pai, filho;
@@ -66,22 +74,19 @@ public class BinaryTree<T extends Comparable<T>> {
         return r;
     }
 
-    public T buscar(T valor) {
-        TreeNode<T> aux;
+    public void remove(T value) {
+        if (this.isEmpty() == true) {
+            System.out.println("Árvore vazia!");
+        } else {
+            this.raiz = this.removeNode(this.raiz, value);
+        }
+    }
+
+    public T find(T value) {
         if (this.isEmpty() == true) {
             return null;
         } else {
-            aux = this.raiz;
-            while (aux != null) {
-                if (valor.compareTo(aux.getInfo()) == 0) {
-                    return aux.getInfo(); // Achou!!!
-                } else if (valor.compareTo(aux.getInfo()) < 0) {
-                    aux = aux.getLeft();
-                } else {
-                    aux = aux.getRight();
-                }
-            }
-            return null; // Não achou!!!
+            return this.raiz.findNode(value);
         }
     }
 
@@ -93,31 +98,15 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    public void insert(T value) {
-        if (this.isEmpty() == true) {
-            this.raiz = new TreeNode(value);
-        } else {
-            this.raiz.insertNode(value);
-        }
-    }
-
-    public void remove(T value) {
-        if (this.isEmpty() == true) {
-            System.out.println("Lista Vazia!");
-        } else {
-            this.raiz = this.removeNode(this.raiz, value);
-        }
-    }
-
-    public void emOrdem() {
+    public void exibir() {
         if (this.isEmpty() == true) {
             System.out.println("Árvore vazia");
         } else {
-            this.percorrerEmOrdem(this.raiz);
+            passeioPorNivel(this.raiz);
         }
     }
 
-    public void passeioPorNivel() {
+    public void passeioPorNivel(TreeNode<T> r) {
         Queue<TreeNode<T>> fila;
         TreeNode<T> aux;
         if (this.isEmpty() == false) {

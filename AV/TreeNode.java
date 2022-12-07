@@ -50,4 +50,22 @@ public class TreeNode<T extends Comparable<T>> {
             }
         }
     }
+
+    T findNode(T value) {
+        if (value.compareTo(this.getInfo()) == 0) {
+            return this.getInfo();
+        } else if (value.compareTo(this.getInfo()) < 0) {
+            if (this.getLeft() == null) {
+                return null;
+            } else {
+                return this.getLeft().findNode(value);
+            }
+        } else {
+            if (this.getRight() == null) {
+                return null;
+            } else {
+                return this.getRight().findNode(value);
+            }
+        }
+    }
 }

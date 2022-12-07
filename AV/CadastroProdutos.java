@@ -6,9 +6,9 @@ public class CadastroProdutos {
     private BinaryTree<Produto> portfolio;
     
     public CadastroProdutos(){
-        portfolio = new BinaryTree();
+        portfolio = new BinaryTree<>();
     }
-    
+
     public void cadastrarProduto(){
         Scanner in = new Scanner (System.in);
         Produto prod;
@@ -23,7 +23,7 @@ public class CadastroProdutos {
         fornecedor = in.nextLine();    
         System.out.print("Informe o preço do produto: ");
         preco = in.nextDouble();
-        System.out.print("Informe a descrição do produto: ");
+        System.out.print("Informe a quantidade em estoque do produto: ");
         qtdEstoque = in.nextInt();
         prod = new Produto(codigo, descricao, fornecedor, preco, qtdEstoque);
         portfolio.insert(prod);
@@ -39,7 +39,7 @@ public class CadastroProdutos {
         codigo = in.nextLine();
 
         prod = new Produto(codigo);
-        retorno = portfolio.buscar(prod);
+        retorno = portfolio.find(prod);
 
         if(retorno == null){
             System.out.println("Produto não cadastrado!");
@@ -66,7 +66,7 @@ public class CadastroProdutos {
         codigo = in.nextLine();
 
         prod = new Produto(codigo);
-        retorno = portfolio.buscar(prod);
+        retorno = portfolio.find(prod);
 
         if(retorno == null){
             System.out.println("Produto não cadastrado!");
@@ -79,7 +79,6 @@ public class CadastroProdutos {
             System.out.println("Quantidade alterada.");
             System.out.println("Dados após a alteração: ");
             System.out.println(retorno);
-
         }        
     }
 
@@ -87,10 +86,10 @@ public class CadastroProdutos {
         Scanner in = new Scanner (System.in);
         Produto prod, retorno;
         String codigo;        
-        System.out.print("Informe o código do aluno: ");
+        System.out.print("Informe o código do produto: ");
         codigo = in.nextLine(); 
         prod = new Produto(codigo);
-        retorno = portfolio.buscar(prod);
+        retorno = portfolio.find(prod);
         if (retorno == null) {
             System.out.println("Produto não cadastrado!");
         } else {
@@ -103,12 +102,25 @@ public class CadastroProdutos {
         if (this.portfolio.isEmpty() == true) {
             System.out.println("Não existem produtos cadastrados");
         } else {
-            this.portfolio.emOrdem();
+            this.portfolio.exibir();
         }
     }
 
     public void removerProduto(){
-        TreeNode<T> r;
+        Scanner in = new Scanner (System.in);
+        Produto prod, retorno;
+        String codigo;
+        System.out.print("Informe o código do produto: ");
+        codigo = in.nextLine();
 
+        prod = new Produto(codigo);
+        retorno = portfolio.find(prod);
+
+        if(retorno == null){
+            System.out.println("Produto não encontrado!");
+        } else {
+            portfolio.remove(retorno);
+            System.out.println("Remoção efetuada!");
+        }        
     }
 }
