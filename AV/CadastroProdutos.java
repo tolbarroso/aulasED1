@@ -102,7 +102,7 @@ public class CadastroProdutos {
         if (this.portfolio.isEmpty() == true) {
             System.out.println("Não existem produtos cadastrados");
         } else {
-            this.portfolio.exibir();
+            this.portfolio.emOrdem();
         }
     }
 

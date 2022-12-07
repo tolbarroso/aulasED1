@@ -98,30 +98,19 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    public void exibir() {
+    public void emOrdem() {
         if (this.isEmpty() == true) {
             System.out.println("Árvore vazia");
         } else {
-            passeioPorNivel(this.raiz);
+            this.percorrerEmOrdem(this.raiz);
         }
     }
 
-    public void passeioPorNivel(TreeNode<T> r) {
-        Queue<TreeNode<T>> fila;
-        TreeNode<T> aux;
-        if (this.isEmpty() == false) {
-            fila = new Queue();
-            fila.enQueue(raiz);
-            while (fila.isEmpty() == false) {
-                aux = fila.deQueue();
-                if (aux.getLeft() != null) {
-                    fila.enQueue(aux.getLeft());
-                }
-                if (aux.getRight() != null) {
-                    fila.enQueue(aux.getRight());
-                }
-                System.out.println(aux.getInfo());
-            }
+    private void percorrerEmOrdem(TreeNode<T> r) {
+        if (r != null) {
+            percorrerEmOrdem(r.getLeft());
+            System.out.println(r.getInfo());
+            percorrerEmOrdem(r.getRight());
         }
     }
 }
